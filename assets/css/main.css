@@ -3014,7 +3014,6 @@ input, select, textarea {
 		min-height: 220px;
 		color: #000000;
 		text-decoration: none;
-		border-bottom: 0;
 		border-color: rgba(0, 0, 0, 0.12);
 	}
 
@@ -4487,7 +4486,104 @@ input, select, textarea {
 			}
 
 		}
+/* Review bar */
+		#reviews-strip {
+		padding: 3rem 1.5rem;
+		background: #0d0d0d;
+		border: 1px solid rgba(201,151,77,0.25);
+		border-radius: 16px;
+		text-align: center;
+		max-width: 1200px;   /* đổi khớp với max-width của .post.featured trong main.css */
+		margin: 3rem auto;
+		}
+		.reviews-inner { max-width: 960px; margin: 0 auto; }
 
+		.reviews-eyebrow {
+		color: #c9974d; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase;
+		opacity: 0; transform: translateY(14px);
+		animation: reviews-text-in 0.6s ease 0.1s forwards;
+		}
+		.reviews-header h2 {
+		margin: 0.4rem 0; color: #f2f2f2;
+		opacity: 0; transform: translateY(14px);
+		animation: reviews-text-in 0.6s ease 0.25s forwards;
+		}
+		.reviews-rating {
+		display: flex; justify-content: center; align-items: center; gap: 0.6rem;
+		color: #bbb; font-size: 0.9rem;
+		opacity: 0; transform: translateY(14px);
+		animation: reviews-text-in 0.6s ease 0.4s forwards;
+		}
+		.reviews-stars-big { color: #c9974d; letter-spacing: 2px; }
+
+		@keyframes reviews-text-in {
+		to { opacity: 1; transform: translateY(0); }
+		}
+
+		.reviews-track-wrap {
+		overflow: hidden; margin: 2rem auto;
+		-webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+		mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+		}
+		.reviews-track {
+		display: flex; gap: 1.2rem; width: max-content;
+		animation: reviews-scroll 45s linear infinite;
+		}
+		.reviews-track:hover { animation-play-state: paused; }
+		@keyframes reviews-scroll {
+		from { transform: translateX(0); }
+		to { transform: translateX(-50%); }
+		}
+
+		.review-card {
+		flex: 0 0 270px; background: #161616; border: 1px solid rgba(201,151,77,0.3);
+		border-radius: 10px; padding: 1.3rem; text-align: left;
+		transition: border-color .3s ease, transform .3s ease;
+		}
+		.review-card:hover { border-color: #c9974d; transform: translateY(-4px); }
+		.review-stars { color: #c9974d; letter-spacing: 2px; margin-bottom: 0.5rem; font-size: 0.9rem; }
+		.review-name { font-weight: 600; color: #f2f2f2; margin-bottom: 0.4rem; }
+		.review-text {
+		font-size: 0.85rem; color: #aaa; line-height: 1.6;
+		display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+		}
+
+		.reviews-cta {
+		display: inline-block; padding: 0.7rem 1.6rem; border: 1px solid #c9974d;
+		border-radius: 6px; color: #c9974d; text-decoration: none; font-size: 0.9rem;
+		transition: background .3s ease, color .3s ease;
+		}
+		.reviews-cta:hover { background: #c9974d; color: #0d0d0d; }
+		.reviews-cta i { margin-left: 6px; }
+
+		.review-modal-overlay {
+		position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+		display: flex; align-items: center; justify-content: center;
+		opacity: 0; visibility: hidden; transition: opacity .3s ease;
+		z-index: 999; padding: 1.5rem;
+		}
+		.review-modal-overlay.is-visible { opacity: 1; visibility: visible; }
+
+		.review-modal-card {
+		background: #161616; border: 1px solid rgba(201,151,77,0.4);
+		border-radius: 12px; padding: 2.2rem; max-width: 480px; width: 100%;
+		text-align: left; position: relative;
+		transform: scale(0.9); transition: transform .3s ease;
+		}
+		.review-modal-overlay.is-visible .review-modal-card { transform: scale(1); }
+
+		.review-modal-close {
+		position: absolute; top: 12px; right: 16px;
+		background: none; border: none; color: #888; font-size: 1.6rem;
+		cursor: pointer; line-height: 1;
+		}
+		.review-modal-close:hover { color: #c9974d; }
+
+		.review-modal-stars { color: #c9974d; letter-spacing: 3px; font-size: 1.1rem; margin-bottom: 0.6rem; }
+		.review-modal-name { color: #f2f2f2; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.8rem; }
+		.review-modal-text { color: #ccc; line-height: 1.7; font-size: 0.95rem; }
+
+		.review-card { cursor: pointer; }
 /* Footer */
 
 	#footer {

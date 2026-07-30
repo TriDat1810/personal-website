@@ -85,12 +85,32 @@
 									</div>
 								</div>
 								<div class="gallery-grid">
-									<div class="gallery-item active" data-image="images/use/pic1.png" data-description="Classic taper with a clean finish."><img src="images/use/pic1.png" alt="Barber haircut example" /></div>
-									<div class="gallery-item" data-image="images/use/pic2.png" data-description="Textured beard styling with sharp shape."><img src="images/use/pic2.png" alt="Beard styling example" /></div>
-									<div class="gallery-item" data-image="images/use/pic3.png" data-description="Smooth hot towel shave with crisp detailing."><img src="images/use/pic3.png" alt="Shave example" /></div>
-									<div class="gallery-item" data-image="images/use/pic4.png" data-description="Precision face grooming for a polished look."><img src="images/use/pic4.png" alt="Face grooming example" /></div>
-									<div class="gallery-item" data-image="images/use/pic5.png" data-description="Soft color refresh with modern definition."><img src="images/use/pic5.png" alt="Hair coloring example" /></div>
-									<div class="gallery-item" data-image="images/use/pic6.png" data-description="Luxury grooming with refined finishing details."><img src="images/use/pic6.png" alt="Luxury grooming example" /></div>
+									<div class="gallery-item active" data-image="images/use/pic1.png" data-description="Classic taper with a clean finish.">
+										<img src="images/use/pic1.png" alt="Barber haircut example" />
+									</div>
+									<div class="gallery-item" data-image="images/use/pic2.png" data-description="Textured beard styling with sharp shape.">
+										<img src="images/use/pic2.png" alt="Beard styling example" />
+									</div>
+									<div class="gallery-item" data-image="images/use/pic3.png" data-description="Smooth hot towel shave with crisp detailing.">
+										<img src="images/use/pic3.png" alt="Shave example" />
+									</div>
+									<div class="gallery-item" data-image="images/use/pic4.png" data-description="Precision face grooming for a polished look.">
+										<img src="images/use/pic4.png" alt="Face grooming example" />
+									</div>
+									<div class="gallery-item" data-image="images/use/pic5.png" data-description="Soft color refresh with modern definition.">
+										<img src="images/use/pic5.png" alt="Hair coloring example" />
+									</div>
+									<div class="gallery-item" data-image="images/use/pic7.png" data-description="Modern textured crop with a clean mid fade.">
+										<img src="images/use/pic7.png" alt="Modern textured crop with mid fade" />
+									</div>
+
+									<div class="gallery-item" data-image="images/use/pic8.png" data-description="Creative mohawk fade with precision hair design.">
+										<img src="images/use/pic8.png" alt="Creative mohawk fade with hair design" />
+									</div>
+
+									<div class="gallery-item" data-image="images/use/pic9.png" data-description="Classic slick back with a smooth low fade and sculpted beard.">
+										<img src="images/use/pic9.png" alt="Classic slick back with low fade" />
+									</div>
 									<a class="gallery-item gallery-instagram" href="https://www.instagram.com/uyenle1401/" target="_blank" rel="noreferrer">
 										<i class="icon brands fa-instagram"></i>
 										<span>Explore More</span>
@@ -145,8 +165,38 @@
 								
 							</article>
 						</section>
+						
 					</div>
+				
+				<section id="reviews-strip">
+					<div class="reviews-inner">
+						<div class="reviews-header">
+							<span class="reviews-eyebrow">Google Reviews</span>
+							<h2>What Our Clients Say</h2>
+							<div class="reviews-rating">
+								<span class="reviews-stars-big">★★★★★</span>
+								<span>4.7 · 132 reviews</span>
+							</div>
+						</div>
 
+						<div class="reviews-track-wrap">
+							<div class="reviews-track" id="reviews-track"></div>
+						</div>
+
+						<a href="https://www.google.com/maps/place/Tierra+Barber+and+Shave/@32.8411797,-117.1016596,16.75z"
+						target="_blank" rel="noreferrer" class="reviews-cta">
+							See All Reviews on Google <i class="icon fa-arrow-right"></i>
+						</a>
+					</div>
+				</section>
+				<div id="review-modal-overlay" class="review-modal-overlay" aria-hidden="true">
+					<div class="review-modal-card" role="dialog" aria-modal="true">
+						<button type="button" class="review-modal-close" aria-label="Close">&times;</button>
+						<div class="review-modal-stars"></div>
+						<div class="review-modal-name"></div>
+						<div class="review-modal-text"></div>
+					</div>
+				</div>
 				<!-- Footer -->
 					<footer id="footer" class="footer-minimal">
 						<div class="footer-content">
@@ -462,6 +512,8 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/reviews.js"></script>
 
 	</body>
 </html>
