@@ -293,7 +293,8 @@ input, select, textarea {
 
 	a {
 		color: #212931;
-		border-bottom-color: rgba(33, 41, 49, 0.5);
+		border-bottom-color: rgba(49, 72, 94, 0.5);
+		
 	}
 
 		a:hover {
@@ -2215,8 +2216,8 @@ input, select, textarea {
 		input[type="button"]:hover,
 		button:hover,
 		.button:hover {
-			box-shadow: inset 0 0 0 2px #18bfef;
-			color: #18bfef !important;
+			box-shadow: inset 0 0 0 2px #c9974d;
+			color: #c9974d !important;
 		}
 
 		input[type="submit"].primary,
@@ -3022,6 +3023,91 @@ input, select, textarea {
 		margin-bottom: 0.75rem;
 	}
 
+/* Time */
+
+	.hours-card {
+		position: relative;
+		background: #1a1a1a;
+		border-radius: 1rem;
+		padding: 2.5rem 2rem;
+		border: 2px solid rgba(200, 160, 80, 0.4);
+		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+		max-width: 1164px;
+		margin: 3rem auto 0;
+	}
+
+	.hours-card::before,
+	.hours-card::after {
+		content: '';
+		position: absolute;
+		width: 2rem;
+		height: 2rem;
+		border-color: rgba(200, 160, 80, 0.7);
+		border-style: solid;
+		border-width: 0;
+		pointer-events: none;
+	}
+
+	.hours-card::before {
+		top: 0.8rem;
+		left: 0.8rem;
+		border-top-width: 2px;
+		border-left-width: 2px;
+	}
+
+	.hours-card::after {
+		bottom: 0.8rem;
+		right: 0.8rem;
+		border-bottom-width: 2px;
+		border-right-width: 2px;
+	}
+
+	.hours-card-header {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-bottom: 1.5rem;
+	}
+	.hours-card-header hr { flex: 1; border-bottom-color: rgba(200,160,80,0.4); margin: 0; }
+	.hours-card-header span {
+		font-size: 0.8rem;
+		letter-spacing: 0.15em;
+		color: #c9974d;
+		white-space: nowrap;
+	}
+
+	.hours-status {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.6rem;
+		margin-bottom: 2rem;
+		padding: 0.6rem;
+		border-radius: 999px;
+		background: rgba(255,255,255,0.04);
+	}
+	.hours-status-dot {
+		width: 9px; height: 9px; border-radius: 50%;
+		background: #666;
+	}
+	.hours-status.is-open .hours-status-dot { background: #4caf50; box-shadow: 0 0 8px #4caf50; }
+	.hours-status.is-closed .hours-status-dot { background: #e05252; }
+	.hours-status-text { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; color: #f2f2f2; }
+
+	.hours-table { width: 100%; border-collapse: collapse; }
+	.hours-table td {
+		padding: 0.5rem 10;
+		font-size: 0.85rem;
+		border-bottom: 1px solid rgba(255,255,255,0.08);
+		border-top: 1px solid rgba(255,255,255,0.08);
+		color: #ccc;
+	}
+	.hours-table td:last-child { text-align: right; color: #999; }
+	.hours-row.is-today td { color: #c9974d !important; font-weight: 700; }	
+
+
+/* Contact */
+
 	.contact-layout {
 		display: grid;
 		grid-template-columns: 1.2fr 0.8fr;
@@ -3776,11 +3862,11 @@ input, select, textarea {
 			-moz-transition: opacity 1s ease-in-out;
 			-webkit-transition: opacity 1s ease-in-out;
 			-ms-transition: opacity 1s ease-in-out;
-			transition: opacity 1s ease-in-out;
+			transition: opacity 0.5s ease-in-out;
 			-moz-transition-delay: 0.75s;
 			-webkit-transition-delay: 0.75s;
 			-ms-transition-delay: 0.75s;
-			transition-delay: 0.75s;
+			transition-delay: 0.1s;
 			background: #1e252d;
 			content: '';
 			display: block;
@@ -4308,7 +4394,7 @@ input, select, textarea {
 
 		#main > * {
 			padding: 4rem 4rem 2rem 4rem ;
-			border-top: solid 2px #eeeeee;
+			/* border-top: solid 2px #eeeeee; */
 			margin: 0;
 		}
 
@@ -4488,13 +4574,12 @@ input, select, textarea {
 		}
 /* Review bar */
 		#reviews-strip {
-		padding: 3rem 1.5rem;
+		padding: 3rem 1rem;
 		background: #0d0d0d;
 		border: 1px solid rgba(201,151,77,0.25);
-		border-radius: 16px;
 		text-align: center;
-		max-width: 1200px;   /* đổi khớp với max-width của .post.featured trong main.css */
-		margin: 3rem auto;
+		max-width: 1152px;
+		margin: 1rem auto;
 		}
 		.reviews-inner { max-width: 960px; margin: 0 auto; }
 
@@ -4526,7 +4611,7 @@ input, select, textarea {
 		mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 		}
 		.reviews-track {
-		display: flex; gap: 1.2rem; width: max-content;
+		display: flex; gap: 1.2rem; width: max-content; padding-top: 4px;
 		animation: reviews-scroll 45s linear infinite;
 		}
 		.reviews-track:hover { animation-play-state: paused; }
@@ -4584,6 +4669,79 @@ input, select, textarea {
 		.review-modal-text { color: #ccc; line-height: 1.7; font-size: 0.95rem; }
 
 		.review-card { cursor: pointer; }
+
+/* Q&A */
+
+	.faq-divider {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+		max-width: 200px;
+		margin: 0 auto 3rem;
+	}
+
+	.faq-divider::before,
+	.faq-divider::after {
+		content: '';
+		flex: 1;
+		height: 1px;
+		background: rgba(201, 151, 77, 0.5);
+	}
+
+	.faq-divider-dot {
+		width: 7px;
+		height: 7px;
+		background: #c9974d;
+		transform: rotate(45deg);
+		flex-shrink: 0;
+	}
+
+	.faq-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+		max-width: 960px;
+		margin: 0 auto;
+	}
+
+	.faq-card {
+		background: #161616;
+		border: 1px solid rgba(201, 151, 77, 0.2);
+		border-radius: 0.75rem;
+		padding: 2.2rem 1.5rem;
+		text-align: center;
+		transition: border-color 0.3s ease, transform 0.3s ease;
+	}
+
+	.faq-card:hover {
+		border-color: #c9974d;
+		transform: translateY(-4px);
+	}
+
+	.faq-card h4 {
+		font-size: 0.85rem;
+		letter-spacing: 0.1em;
+		color: #f2f2f2;
+		margin-bottom: 0.8rem;
+	}
+
+	.faq-card p {
+		font-size: 0.85rem;
+		color: #aaa;
+		line-height: 1.7;
+		margin: 0;
+		text-align: center;
+	}
+
+	@media screen and (max-width: 900px) {
+		.faq-grid { grid-template-columns: repeat(2, 1fr); }
+	}
+
+	@media screen and (max-width: 600px) {
+		.faq-grid { grid-template-columns: 1fr; }
+	}
+
 /* Footer */
 
 	#footer {

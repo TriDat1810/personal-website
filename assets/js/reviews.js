@@ -34,9 +34,8 @@ $(function () {
   }
 
   renderReviews();
-});
 
-var $reviewModal = $('#review-modal-overlay');
+  var $reviewModal = $('#review-modal-overlay');
   var $modalStars = $reviewModal.find('.review-modal-stars');
   var $modalName = $reviewModal.find('.review-modal-name');
   var $modalText = $reviewModal.find('.review-modal-text');
@@ -67,3 +66,4 @@ var $reviewModal = $('#review-modal-overlay');
   $(document).on('keydown', function (e) {
     if (e.key === 'Escape') closeReviewModal();
   });
+});  
