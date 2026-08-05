@@ -2929,20 +2929,43 @@ input, select, textarea {
 
 /* Mosaic Gallery */
 	.gallery-mosaic-wrap {
-		max-width: 640px;
-		margin: 0 auto;
+		width: 100%;
 	}
 
 	.gallery-mosaic {
 		display: grid;
+		gap: 0.6rem;
+		width: 100%;
+		aspect-ratio: 1 / 1;
+	}
+
+	.gallery-mosaic.layout-1 {
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr;
+		grid-template-areas: "a";
+	}
+
+	.gallery-mosaic.layout-2 {
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr;
+		grid-template-areas: "a b";
+	}
+
+	.gallery-mosaic.layout-3 {
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+		grid-template-areas:
+			"a c"
+			"b c";
+	}
+
+	.gallery-mosaic.layout-4 {
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-rows: repeat(3, 1fr);
 		grid-template-areas:
-			"p p q"
-			"p p q"
-			"r s q";
-		gap: 0.6rem;
-		aspect-ratio: 1 / 1;
+			"a a b"
+			"a a b"
+			"c d b";
 	}
 
 	.mosaic-tile {
@@ -2994,7 +3017,7 @@ input, select, textarea {
 
 	.gallery-page-btn {
 		width: 2.5rem;
-		height: 4rem;
+		height: 2.5rem;
 		border-radius: 50%;
 		border: 1px solid rgba(201, 151, 77, 0.4);
 		background: transparent;
