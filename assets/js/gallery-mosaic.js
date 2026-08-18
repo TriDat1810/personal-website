@@ -117,32 +117,82 @@ $(function () {
     function renderPage(pageIndex) {
         var items = pages[pageIndex];
 
-        // Seed riêng cho từng trang (ngày + số trang) để mỗi trang có khung khác nhau, nhưng vẫn ổn định trong ngày
-        var layoutRng = mulberry32(todaySeed + pageIndex * 137);
-
-        // Mobile: giới hạn tỉ lệ chặt hơn (0.4–0.6) để tránh ô quá mỏng khó nhìn trên màn hình hẹp
-        // PC: cho phép lệch nhiều hơn (0.3–0.7) để bố cục đa dạng, kịch tính hơn
-        var ratioRange = isMobile() ? [0.4, 0.6] : [0.3, 0.7];
-
-        var rects = splitRect({ x: 0, y: 0, w: 1, h: 1 }, items.length, layoutRng, ratioRange[0], ratioRange[1]);
-
         $mosaic.empty();
 
-        items.forEach(function (item, i) {
-            var lines = rectToGridLines(rects[i]);
+        if (isMobile()) {
 
-            var $tile = $('<div class="mosaic-tile gallery-item"></div>')
-                .css('grid-column', lines.colStart + ' / ' + lines.colEnd)
-                .css('grid-row', lines.rowStart + ' / ' + lines.rowEnd)
-                .attr('data-image', item.src)
-                .attr('data-description', item.desc);
+            // ==============================
+            // MOBILE: 4 ảnh dạng 2 x 2
+            // ==============================
 
-            $('<img>').attr('src', item.src).attr('alt', item.alt).appendTo($tile);
-            $mosaic.append($tile);
-        });
+            $mosaic.addClass('mobile-gallery-layout');
+
+            items.forEach(function (item) {
+
+                var $tile = $('<div class="mosaic-tile gallery-item"></div>')
+                    .attr('data-image', item.src)
+                    .attr('data-description', item.desc);
+
+                $('<img>')
+                    .attr('src', item.src)
+                    .attr('alt', item.alt)
+                    .appendTo($tile);
+
+                $mosaic.append($tile);
+            });
+
+        } else {
+
+            // ==============================
+            // DESKTOP: GIỮ NGUYÊN MOSAIC
+            // ==============================
+
+            $mosaic.removeClass('mobile-gallery-layout');
+
+            var layoutRng = mulberry32(
+                todaySeed + pageIndex * 137
+            );
+
+            var rects = splitRect(
+                { x: 0, y: 0, w: 1, h: 1 },
+                items.length,
+                layoutRng,
+                0.3,
+                0.7
+            );
+
+            items.forEach(function (item, i) {
+
+                var lines = rectToGridLines(rects[i]);
+
+                var $tile = $('<div class="mosaic-tile gallery-item"></div>')
+                    .css(
+                        'grid-column',
+                        lines.colStart + ' / ' + lines.colEnd
+                    )
+                    .css(
+                        'grid-row',
+                        lines.rowStart + ' / ' + lines.rowEnd
+                    )
+                    .attr('data-image', item.src)
+                    .attr('data-description', item.desc);
+
+                $('<img>')
+                    .attr('src', item.src)
+                    .attr('alt', item.alt)
+                    .appendTo($tile);
+
+                $mosaic.append($tile);
+            });
+        }
+
+        // ==============================
+        // Pagination — GIỮ NGUYÊN
+        // ==============================
 
         $dots.removeClass('is-active');
         $dots.eq(pageIndex).addClass('is-active');
+
         currentPage = pageIndex;
     }
 
