@@ -4,6 +4,13 @@ $(function () {
         return { target: $(this).data('target'), label: $(this).text().trim() };
     }).get();
 
+    var iconMap = {
+        services: 'fa-cut',
+        gallery: 'fa-images',
+        faq: 'fa-question-circle',
+        contact: 'fa-map-marker-alt'
+    };
+    
     if (!items.length) {
         return;
     }
@@ -12,7 +19,10 @@ $(function () {
         '<div id="mobile-nav-bar">' +
             '<img class="mobile-nav-logo" src="images/use/Main-Logo.png" alt="Tierrasanta Barber logo" />' +
             '<div class="mobile-nav-center" id="mobile-nav-center">' +
-                '<span class="mobile-nav-label" id="mobile-nav-label"></span>' +
+                '<div class="mobile-nav-label-row" id="mobile-nav-label-row">' +
+                    '<i class="icon solid mobile-nav-icon" id="mobile-nav-icon"></i>' +
+                    '<span class="mobile-nav-label" id="mobile-nav-label"></span>' +
+                '</div>' +
                 '<div class="mobile-nav-dots" id="mobile-nav-dots"></div>' +
             '</div>' +
             '<a class="mobile-nav-call" href="tel:+18582629221" aria-label="Call the shop">' +
@@ -20,7 +30,8 @@ $(function () {
             '</a>' +
         '</div>'
     ).prependTo('#wrapper');
-
+    
+    var $icon = $bar.find('#mobile-nav-icon');
     var currentIndex = 0;   // mục đã thực sự chuyển tab
     var pendingIndex = 0;   // mục đang xem trước khi vuốt (chưa chốt)
     var $label = $bar.find('#mobile-nav-label');
@@ -46,20 +57,24 @@ $(function () {
         var exitX = direction === 1 ? '-100%' : '100%';
         var enterX = direction === 1 ? '100%' : '-100%';
 
-        $label
+        var $animated = $label.add($icon);
+
+        $animated
             .css('transition', 'transform 0.18s ease, opacity 0.18s ease')
             .css('transform', 'translateX(' + exitX + ')')
             .css('opacity', 0);
 
         labelAnimTimer = window.setTimeout(function () {
-            $label
-                .text(item.label)
+            $label.text(item.label);
+            $icon.attr('class', 'icon solid mobile-nav-icon ' + iconMap[item.target]);
+
+            $animated
                 .css('transition', 'none')
                 .css('transform', 'translateX(' + enterX + ')');
 
             void $label[0].offsetWidth;
 
-            $label
+            $animated
                 .css('transition', 'transform 0.18s ease, opacity 0.18s ease')
                 .css('transform', 'translateX(0)')
                 .css('opacity', 1);
@@ -115,21 +130,6 @@ $(function () {
     var lastScrollY = window.scrollY;
     var ticking = false;
 
-    function onScroll() {
-        var currentY = window.scrollY;
-
-        if (currentY < contentStart) {
-            $bar.removeClass('is-hidden');
-        } else if (currentY > lastScrollY) {
-            $bar.addClass('is-hidden');
-        } else {
-            $bar.removeClass('is-hidden');
-        }
-
-        lastScrollY = currentY;
-        ticking = false;
-    }
-
     window.addEventListener('scroll', function () {
         if (!ticking) {
             window.requestAnimationFrame(onScroll);
@@ -145,5 +145,10 @@ $(function () {
     currentIndex = startIndex;
     pendingIndex = startIndex;
     $label.text(items[startIndex].label);
+    $icon.attr('class', 'icon solid mobile-nav-icon ' + iconMap[items[startIndex].target]);
     $dots.eq(startIndex).addClass('is-active');
+
+    window.setTimeout(function () {
+        $bar.find('#mobile-nav-label-row').addClass('is-hinting');
+    }, 700);
 });

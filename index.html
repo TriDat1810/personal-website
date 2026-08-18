@@ -14,25 +14,103 @@
 			<div id="wrapper" class="fade-in">
 
 				<!-- Intro -->
-					<div id="intro">
-						<img src="images/use/Main-Logo.png" alt="Tierrasanta Logo" class="intro-logo" />
+					<div id="intro" class="hero">
+						<div class="hero-slides" id="hero-slides">
 
-						<h1>Tierrasanta<br />Barber and Shave</h1>
-					
-						<p>
-						Welcome to <strong>Tierrasanta Barber and Shave</strong> — where great style meets 
-						genuine care. With over <strong>10 years of experience</strong>, our skilled barbers 
-						are dedicated to delivering more than just a haircut. Every visit is a personalized 
-						experience crafted with precision, passion, and attention to detail. Whether you're 
-						coming in for a classic cut, a clean shave, or a complete grooming session, we make 
-						sure you leave looking sharp and feeling confident. Because at Tierrasanta, 
-						<em>every client deserves the very best.</em>
-						</p>
-						<ul class="actions">
-							<li><a href="#nav" class="button icon solid solo fa-arrow-down scrolly reveal-nav">Continue</a></li>
-						</ul>
+							<!-- Trang 1: Logo + giới thiệu -->
+							<div class="hero-slide hero-slide-logo is-active" data-slide="0">
+								<div class="hero-slide-inner">
+									<img src="images/use/Main-Logo.png" alt="Tierrasanta Logo" class="intro-logo intro-logo-large" />
+									<span class="hero-eyebrow">TIERRASANTA</span>
+									<h1 class="hero-h1-large">Barber &amp; Shave</h1>
+									<p class="hero-tagline hero-tagline-long">
+										Welcome to Tierrasanta Barber and Shave — where great style meets genuine care. With over 10 years of experience, our skilled barbers are dedicated to delivering more than just a haircut. Every visit is a personalized experience crafted with precision, passion, and attention to detail.
+									</p>
+									<ul class="actions hero-actions">
+										<li><a href="#contact" class="button hero-cta-primary hero-cta" data-target="contact">Book Now</a></li>
+										<li><a href="#gallery" class="button hero-cta-secondary hero-cta" data-target="gallery">View Work</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<!-- Trang 2: Kiểu MrBeast — chữ trái, ảnh nghiêng chồng phải -->
+							<div class="hero-slide hero-slide-split" data-slide="1">
+								<div class="hero-slide-inner hero-split-inner">
+									<div class="hero-split-text">
+										<span class="hero-eyebrow">OUR WORK</span>
+										<h2>Sharp Fades.<br />Sharper Details.</h2>
+										<p class="hero-tagline">Every cut is crafted with precision — see it for yourself.</p>
+										<ul class="actions hero-actions">
+											<li><a href="#gallery" class="button hero-cta-primary hero-cta" data-target="gallery">View Gallery</a></li>
+										</ul>
+									</div>
+									<div class="hero-split-media">
+										<img class="hero-tilt-photo hero-tilt-1" src="images/use/pic1.png" alt="Haircut example" />
+										<img class="hero-tilt-photo hero-tilt-2" src="images/use/pic2.png" alt="Haircut example" />
+										<img class="hero-tilt-photo hero-tilt-3" src="images/use/pic4.png" alt="Haircut example" />
+										<img class="hero-tilt-photo hero-tilt-4" src="images/use/pic5.png" alt="Haircut example" />
+										<img class="hero-tilt-photo hero-tilt-5" src="images/use/pic8.png" alt="Haircut example" />
+									</div>
+								</div>
+							</div>
+
+							<!-- Trang 3: Trạng thái mở cửa trực tiếp -->
+							<div class="hero-slide hero-slide-status" data-slide="2">
+								<div class="hero-slide-inner hero-split-inner">
+									<div class="hero-split-text">
+										<span class="hero-eyebrow">RIGHT NOW</span>
+										<h2 id="hero-status-heading">Checking hours…</h2>
+										<p class="hero-tagline">Walk-ins welcome, or call ahead to skip the wait.</p>
+										<ul class="actions hero-actions">
+											<li><a href="tel:+18582629221" class="button hero-cta-primary">Call (858) 262-9221</a></li>
+											<li><a href="https://www.google.com/maps?q=Tierra+Barber+and+Shave+Santo+Rd+Ste+C,+San+Diego,+CA+92124" target="_blank" rel="noreferrer" class="button hero-cta-secondary">Get Directions</a></li>
+										</ul>
+									</div>
+									<div class="hero-clock-card">
+										<div class="hero-clock-status" id="hero-clock-status">
+											<span class="hero-clock-dot"></span>
+											<span id="hero-clock-status-text">—</span>
+										</div>
+										<div class="hero-clock-time" id="hero-clock-time">--:--:--</div>
+										<div class="hero-clock-date" id="hero-clock-date">—</div>
+										<div class="hero-clock-hours">
+											<div>Mon – Fri: 9:00 AM – 6:30 PM</div>
+											<div>Sat – Sun: 9:00 AM – 5:00 PM</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="hero-dots" id="hero-dots">
+							<button type="button" class="hero-dot is-active" data-slide="0" aria-label="Slide 1">
+								<svg class="hero-dot-ring" viewBox="0 0 22 22">
+									<circle class="hero-dot-ring-bg" cx="11" cy="11" r="9" pathLength="1"></circle>
+									<circle class="hero-dot-ring-progress" cx="11" cy="11" r="9" pathLength="1"></circle>
+								</svg>
+								<span class="hero-dot-core"></span>
+							</button>
+							<button type="button" class="hero-dot" data-slide="1" aria-label="Slide 2">
+								<svg class="hero-dot-ring" viewBox="0 0 22 22">
+									<circle class="hero-dot-ring-bg" cx="11" cy="11" r="9" pathLength="1"></circle>
+									<circle class="hero-dot-ring-progress" cx="11" cy="11" r="9" pathLength="1"></circle>
+								</svg>
+								<span class="hero-dot-core"></span>
+							</button>
+							<button type="button" class="hero-dot" data-slide="2" aria-label="Slide 3">
+								<svg class="hero-dot-ring" viewBox="0 0 22 22">
+									<circle class="hero-dot-ring-bg" cx="11" cy="11" r="9" pathLength="1"></circle>
+									<circle class="hero-dot-ring-progress" cx="11" cy="11" r="9" pathLength="1"></circle>
+								</svg>
+								<span class="hero-dot-core"></span>
+							</button>
+						</div>
+
+						<a href="#nav" class="hero-scroll-hint reveal-nav" aria-label="Scroll down">
+							<i class="icon solid fa-chevron-down"></i>
+						</a>
 					</div>
-
 				<!-- Header -->
 					
 
@@ -554,6 +632,7 @@
 			<script src="assets/js/time.js"></script>
 			<script src="assets/js/gallery-mosaic.js"></script>
 			<script src="assets/js/mobile-nav.js"></script>
+			<script src="assets/js/hero.js"></script>
 
 	</body>
 </html>
