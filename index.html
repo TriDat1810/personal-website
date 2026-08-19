@@ -83,33 +83,36 @@
 
 						</div>
 
-						<div class="hero-dots" id="hero-dots">
-							<button type="button" class="hero-dot is-active" data-slide="0" aria-label="Slide 1">
-								<svg class="hero-dot-ring" viewBox="0 0 22 22">
-									<circle class="hero-dot-ring-bg" cx="11" cy="11" r="9" pathLength="1"></circle>
-									<circle class="hero-dot-ring-progress" cx="11" cy="11" r="9" pathLength="1"></circle>
-								</svg>
-								<span class="hero-dot-core"></span>
-							</button>
-							<button type="button" class="hero-dot" data-slide="1" aria-label="Slide 2">
-								<svg class="hero-dot-ring" viewBox="0 0 22 22">
-									<circle class="hero-dot-ring-bg" cx="11" cy="11" r="9" pathLength="1"></circle>
-									<circle class="hero-dot-ring-progress" cx="11" cy="11" r="9" pathLength="1"></circle>
-								</svg>
-								<span class="hero-dot-core"></span>
-							</button>
-							<button type="button" class="hero-dot" data-slide="2" aria-label="Slide 3">
-								<svg class="hero-dot-ring" viewBox="0 0 22 22">
-									<circle class="hero-dot-ring-bg" cx="11" cy="11" r="9" pathLength="1"></circle>
-									<circle class="hero-dot-ring-progress" cx="11" cy="11" r="9" pathLength="1"></circle>
-								</svg>
-								<span class="hero-dot-core"></span>
-							</button>
-						</div>
+						    <div class="hero-bottom-bar">
+								<div class="hero-dots" id="hero-dots">
+									<button type="button" class="hero-dot is-active" data-slide="0" aria-label="Slide 1">
+										<svg class="hero-dot-ring" viewBox="0 0 22 22">
+											<circle class="hero-dot-ring-bg" cx="11" cy="11" r="9" pathLength="1"></circle>
+											<circle class="hero-dot-ring-progress" cx="11" cy="11" r="9" pathLength="1"></circle>
+										</svg>
+										<span class="hero-dot-core"></span>
+									</button>
+									<button type="button" class="hero-dot" data-slide="1" aria-label="Slide 2">
+										<svg class="hero-dot-ring" viewBox="0 0 22 22">
+											<circle class="hero-dot-ring-bg" cx="11" cy="11" r="9" pathLength="1"></circle>
+											<circle class="hero-dot-ring-progress" cx="11" cy="11" r="9" pathLength="1"></circle>
+										</svg>
+										<span class="hero-dot-core"></span>
+									</button>
+									<button type="button" class="hero-dot" data-slide="2" aria-label="Slide 3">
+										<svg class="hero-dot-ring" viewBox="0 0 22 22">
+											<circle class="hero-dot-ring-bg" cx="11" cy="11" r="9" pathLength="1"></circle>
+											<circle class="hero-dot-ring-progress" cx="11" cy="11" r="9" pathLength="1"></circle>
+										</svg>
+										<span class="hero-dot-core"></span>
+									</button>
+								</div>
 
-						<a href="#nav" class="hero-scroll-hint reveal-nav" aria-label="Scroll down">
-							<i class="icon solid fa-chevron-down"></i>
-						</a>
+								<a href="#nav" class="hero-scroll-hint reveal-nav" aria-label="Scroll down">
+									<i class="icon solid fa-chevron-down"></i>
+								</a>
+							</div>
+						</div>
 					</div>
 				<!-- Header -->
 					
@@ -347,13 +350,12 @@
 			</div>
 
 		<div id="contact-success-popup" class="contact-popup-overlay" aria-hidden="true">
-			<div class="contact-popup-card" role="dialog" aria-modal="true">
-				<div class="contact-popup-icon">✓</div>
-				<h3>Message Sent!</h3>
-				<p>Thank you for reaching out. We'll get back to you within 24 hours.</p>
-				<button type="button" class="contact-popup-close">Got it</button>
-			</div>
-		</div>
+		<dialog class="contact-popup-card">
+			<div class="contact-popup-icon">✓</div>
+			<h3>Message Sent!</h3>
+			<p>Thank you for reaching out. We'll get back to you within 24 hours.</p>
+			<button type="button" class="contact-popup-close">Got it</button>
+		</dialog>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>

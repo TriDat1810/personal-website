@@ -11,8 +11,7 @@
 		$wrapper = $('#wrapper'),
 		$header = $('#header'),
 		$nav = $('#nav'),
-		$main = $('#main'),
-		$navPanelToggle, $navPanel, $navPanelInner;
+		$main = $('#main');
 
 	// Breakpoints.
 		breakpoints({
@@ -122,8 +121,6 @@
 
 	// Background.
 		$wrapper._parallax(0.925);
-
-	// Nav Panel.
 
 	// Intro.
 		var $intro = $('#intro');

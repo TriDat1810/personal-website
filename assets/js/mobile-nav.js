@@ -126,17 +126,6 @@ $(function () {
         deltaX < 0 ? goNext() : goPrev();
     });
 
-    var contentStart = $('#nav').length ? $('#nav').offset().top : 0;
-    var lastScrollY = window.scrollY;
-    var ticking = false;
-
-    window.addEventListener('scroll', function () {
-        if (!ticking) {
-            window.requestAnimationFrame(onScroll);
-            ticking = true;
-        }
-    }, { passive: true });
-
     var initialIndex = items.findIndex(function (item) {
         return $navLinks.filter('[data-target="' + item.target + '"]').hasClass('active');
     });

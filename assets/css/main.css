@@ -3960,6 +3960,7 @@ input, select, textarea {
 		display: -ms-flex;
 		display: flex;
 		position: relative;
+		flex-direction: column;
 		cursor: default;
 		z-index: 1;
 		min-height: 100vh;
@@ -4049,25 +4050,24 @@ input, select, textarea {
 	.hero-slides {
 		position: relative;
 		width: 100%;
-		height: 100vh;
+		flex: 1 1 auto;
+		min-height: 0;
 	}
 
 	.hero-slide {
-		position: absolute;
-		inset: 0;
-		display: flex;
+		display: none;
 		align-items: center;
-		opacity: 0;
-		visibility: hidden;
-		pointer-events: none;
-		transition: opacity 0.6s ease;
-		overflow-y: auto;
+		width: 100%;
 	}
 
 	.hero-slide.is-active {
-		opacity: 1;
-		visibility: visible;
-		pointer-events: auto;
+		display: flex;
+		animation: hero-fade-in 0.5s ease;
+	}
+
+	@keyframes hero-fade-in {
+		from { opacity: 0; }
+		to { opacity: 1; }
 	}
 
 	.hero-slide-inner {
@@ -4079,7 +4079,7 @@ input, select, textarea {
 	.hero-slide-logo .hero-slide-inner {
 		max-width: 1400px;
 		margin: 0 auto;
-		padding: 2rem;
+		padding: 6rem 3rem 2rem 3rem;
 		text-align: center;
 	}
 
@@ -4115,7 +4115,7 @@ input, select, textarea {
 		align-items: center;
 		gap: 3rem;
 		width: 100%;
-		padding: 2rem 4rem;
+		padding: 6rem 3rem 2rem 3rem;
 	}
 
 	.hero-split-text {
@@ -4143,6 +4143,7 @@ input, select, textarea {
 		font-size: 1.05rem;
 		color: #ccc;
 		margin-bottom: 1.8rem;
+		text-align: center;
 	}
 
 	.hero-actions {
@@ -4269,12 +4270,18 @@ input, select, textarea {
 	/* ===== Chấm điều hướng có vòng tiến trình ===== */
 
 	.hero-dots {
-		position: absolute;
-		bottom: 4.75rem;
-		left: 50%;
-		transform: translateX(-50%);
 		display: flex;
 		gap: 1rem;
+	}
+
+	.hero-bottom-bar {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.7rem;
+		padding-top: 2rem;
+		padding-bottom: 1.8rem;
+		position: relative;
 		z-index: 5;
 	}
 
@@ -4328,20 +4335,15 @@ input, select, textarea {
 	}
 
 	.hero-scroll-hint {
-		position: absolute;
-		bottom: 1rem;
-		left: 50%;
-		transform: translateX(-50%);
 		color: #c9974d;
 		font-size: 1.3rem;
 		border-bottom: none !important;
 		animation: hero-bounce 2s ease infinite;
-		z-index: 5;
 	}
 
 	@keyframes hero-bounce {
-		0%, 100% { transform: translateX(-50%) translateY(0); }
-		50% { transform: translateX(-50%) translateY(6px); }
+		0%, 100% { transform: translateY(0); }
+		50% { transform: translateY(6px); }
 	}
 
 	@media screen and (max-width: 980px) {
@@ -4354,7 +4356,7 @@ input, select, textarea {
 			flex-direction: column;
 			padding: 2rem 1.5rem;
 			text-align: center;
-			gap: 1.5rem;
+			gap: clamp(0.5rem, 2vw, 1.5rem);
 		}
 
 		.hero-split-text {
@@ -4372,18 +4374,18 @@ input, select, textarea {
 
 		.hero-split-media {
 			width: 100%;
-			height: 270px;
+			height: clamp(190px, 48vw, 270px);
 			flex: none;
 			order: -1;
 			position: relative;
 			margin-bottom: 0.5rem;
 		}
 
-		.hero-tilt-1 { width: 90px;  height: 115px; }
-		.hero-tilt-2 { width: 130px; height: 165px; }
-		.hero-tilt-3 { width: 80px;  height: 100px; }
-		.hero-tilt-4 { width: 115px; height: 145px; }
-		.hero-tilt-5 { width: 95px;  height: 125px; }
+		.hero-tilt-1 { width: clamp(62px, 23vw, 90px);  height: clamp(80px, 30vw, 115px); }
+		.hero-tilt-2 { width: clamp(88px, 33vw, 130px);  height: clamp(112px, 42vw, 165px); }
+		.hero-tilt-3 { width: clamp(58px, 20vw, 80px);   height: clamp(74px, 26vw, 100px); }
+		.hero-tilt-4 { width: clamp(80px, 29vw, 115px);  height: clamp(100px, 36vw, 145px); }
+		.hero-tilt-5 { width: clamp(62px, 24vw, 95px);   height: clamp(80px, 30vw, 125px); }
 
 		.hero-tilt-1 {
 			top: 8%;
@@ -4418,8 +4420,9 @@ input, select, textarea {
 			max-width: 100%;
 		}
 
-		.hero-dots {
-			bottom: 0.8rem;
+		.hero-bottom-bar {
+			padding-top: 1rem;
+			padding-bottom: 1rem;
 		}
 
 		.hero-scroll-hint {
@@ -4544,7 +4547,7 @@ input, select, textarea {
 
 		}
 
-		@media screen and (max-width: 736px) {
+		@media screen and (max-width: 700px) {
 
 			#header {
 				padding: 0.85rem 1rem;
