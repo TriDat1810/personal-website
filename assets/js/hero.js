@@ -50,16 +50,6 @@ $(function () {
     goToSlide(0);
     scheduleNext();
 
-    // Nút CTA — cuộn xuống nav rồi tự chuyển đúng tab
-    $('.hero-cta').on('click', function (e) {
-        e.preventDefault();
-        var target = $(this).data('target');
-        if (!target) return;
-        $('html, body').animate({ scrollTop: $('#nav').offset().top - 80 }, 500, function () {
-            $('.nav-link[data-target="' + target + '"]').trigger('click');
-        });
-    });
-
     // Đồng hồ trực tiếp + trạng thái mở cửa cho Trang 3
     function updateHeroClock() {
         var now = new Date();
@@ -75,7 +65,7 @@ $(function () {
         var day = now.getDay();
         var hourFloat = now.getHours() + now.getMinutes() / 60;
         var isWeekend = (day === 0 || day === 6);
-        var openTime = 9;
+        var openTime = 9.5; // 9:30 AM
         var closeTime = isWeekend ? 17 : 18.5;
         var isOpen = hourFloat >= openTime && hourFloat < closeTime;
 
@@ -84,7 +74,7 @@ $(function () {
         $('#hero-clock-status-text').text(isOpen ? 'Open Now' : 'Closed Now');
 
         var closeLabel = isWeekend ? '5:00 PM' : '6:30 PM';
-        $('#hero-status-heading').text(isOpen ? ('Open Today Until ' + closeLabel) : 'Closed — Opens Tomorrow at 9:00 AM');
+        $('#hero-status-heading').text(isOpen ? ('Open Today Until ' + closeLabel) : 'Closed — Opens Tomorrow at 9:30 AM');
     }
 
     updateHeroClock();

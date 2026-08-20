@@ -3960,7 +3960,6 @@ input, select, textarea {
 		display: -ms-flex;
 		display: flex;
 		position: relative;
-		flex-direction: column;
 		cursor: default;
 		z-index: 1;
 		min-height: 100vh;
@@ -4044,30 +4043,32 @@ input, select, textarea {
 	#hero-status-heading {
 		font-size: clamp(1.6rem, 3vw, 2.6rem);
 		line-height: 1.25;
+		white-space: nowrap;
 	}
 	/* ===== Khung slide ===== */
 
 	.hero-slides {
 		position: relative;
 		width: 100%;
-		flex: 1 1 auto;
-		min-height: 0;
+		height: 100vh;
 	}
 
 	.hero-slide {
-		display: none;
+		position: absolute;
+		inset: 0;
+		display: flex;
 		align-items: center;
-		width: 100%;
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		transition: opacity 0.6s ease;
+		overflow-y: auto;
 	}
 
 	.hero-slide.is-active {
-		display: flex;
-		animation: hero-fade-in 0.5s ease;
-	}
-
-	@keyframes hero-fade-in {
-		from { opacity: 0; }
-		to { opacity: 1; }
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
 	}
 
 	.hero-slide-inner {
@@ -4079,7 +4080,7 @@ input, select, textarea {
 	.hero-slide-logo .hero-slide-inner {
 		max-width: 1400px;
 		margin: 0 auto;
-		padding: 6rem 3rem 2rem 3rem;
+		padding: 2rem;
 		text-align: center;
 	}
 
@@ -4115,7 +4116,7 @@ input, select, textarea {
 		align-items: center;
 		gap: 3rem;
 		width: 100%;
-		padding: 6rem 3rem 2rem 3rem;
+		padding: 2rem 4rem;
 	}
 
 	.hero-split-text {
@@ -4143,7 +4144,6 @@ input, select, textarea {
 		font-size: 1.05rem;
 		color: #ccc;
 		margin-bottom: 1.8rem;
-		text-align: center;
 	}
 
 	.hero-actions {
@@ -4182,7 +4182,7 @@ input, select, textarea {
 	.hero-tilt-photo {
 		position: absolute;
 		object-fit: cover;
-		border: 6px solid #ffffff;
+		border: 5px solid #ffffff;
 		border-radius: 4px;
 		box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 	}
@@ -4270,18 +4270,12 @@ input, select, textarea {
 	/* ===== Chấm điều hướng có vòng tiến trình ===== */
 
 	.hero-dots {
+		position: absolute;
+		bottom: 4.75rem;
+		left: 50%;
+		transform: translateX(-50%);
 		display: flex;
 		gap: 1rem;
-	}
-
-	.hero-bottom-bar {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 0.7rem;
-		padding-top: 2rem;
-		padding-bottom: 1.8rem;
-		position: relative;
 		z-index: 5;
 	}
 
@@ -4335,28 +4329,37 @@ input, select, textarea {
 	}
 
 	.hero-scroll-hint {
+		position: absolute;
+		bottom: 1rem;
+		left: 50%;
+		transform: translateX(-50%);
 		color: #c9974d;
 		font-size: 1.3rem;
 		border-bottom: none !important;
 		animation: hero-bounce 2s ease infinite;
+		z-index: 5;
 	}
 
 	@keyframes hero-bounce {
-		0%, 100% { transform: translateY(0); }
-		50% { transform: translateY(6px); }
+		0%, 100% { transform: translateX(-50%) translateY(0); }
+		50% { transform: translateX(-50%) translateY(6px); }
 	}
 
-	@media screen and (max-width: 980px) {
+	@media screen and (max-width: 580px) {
 
 		.hero-h1-large {
 			white-space: normal;
+		}
+		
+		.hero-tagline {
+			text-align: center;
 		}
 
 		.hero-split-inner {
 			flex-direction: column;
 			padding: 2rem 1.5rem;
 			text-align: center;
-			gap: clamp(0.5rem, 2vw, 1.5rem);
+			gap: 1.5rem;
 		}
 
 		.hero-split-text {
@@ -4374,43 +4377,64 @@ input, select, textarea {
 
 		.hero-split-media {
 			width: 100%;
-			height: clamp(190px, 48vw, 270px);
+			height: 300px;
 			flex: none;
 			order: -1;
 			position: relative;
 			margin-bottom: 0.5rem;
 		}
 
-		.hero-tilt-1 { width: clamp(62px, 23vw, 90px);  height: clamp(80px, 30vw, 115px); }
-		.hero-tilt-2 { width: clamp(88px, 33vw, 130px);  height: clamp(112px, 42vw, 165px); }
-		.hero-tilt-3 { width: clamp(58px, 20vw, 80px);   height: clamp(74px, 26vw, 100px); }
-		.hero-tilt-4 { width: clamp(80px, 29vw, 115px);  height: clamp(100px, 36vw, 145px); }
-		.hero-tilt-5 { width: clamp(62px, 24vw, 95px);   height: clamp(80px, 30vw, 125px); }
-
+		/* Left - top */
 		.hero-tilt-1 {
-			top: 8%;
-			left: 4%;
+			width: 105px;
+			height: 135px;
+			top: 25px;
+			left: 3%;
+			transform: none !important;
+			z-index: 2;
 		}
 
+		/* Left - center / main */
 		.hero-tilt-2 {
-			top: 28%;
-			left: 20%;
+			width: 145px;
+			height: 175px;
+			top: 135px;
+			left: 8%;
+			transform: none !important;
+			z-index: 4;
 		}
 
+		/* Center - top */
 		.hero-tilt-3 {
-			top: 2%;
-			left: 42%;
+			width: 105px;
+			height: 125px;
+			top: 15px;
+			left: 37%;
+			transform: none !important;
+			z-index: 1;
 		}
 
+		/* Center/right - main */
 		.hero-tilt-4 {
-			top: 24%;
-			left: 58%;
+			width: 135px;
+			height: 165px;
+			top: 130px;
+			left: 45%;
+			transform: none !important;
+			z-index: 3;
 		}
 
+		/* Right - top */
 		.hero-tilt-5 {
-			top: 5%;
-			left: 78%;
+			width: 105px;
+			height: 135px;
+			top: 20px;
+			left: auto;
+			right: 2%;
+			transform: none !important;
+			z-index: 2;
 		}
+
 
 		.hero-clock-time {
 			font-size: 2.2rem;
@@ -4420,9 +4444,8 @@ input, select, textarea {
 			max-width: 100%;
 		}
 
-		.hero-bottom-bar {
-			padding-top: 1rem;
-			padding-bottom: 1rem;
+		.hero-dots {
+			bottom: 0.8rem;
 		}
 
 		.hero-scroll-hint {
@@ -4547,7 +4570,7 @@ input, select, textarea {
 
 		}
 
-		@media screen and (max-width: 700px) {
+		@media screen and (max-width: 736px) {
 
 			#header {
 				padding: 0.85rem 1rem;

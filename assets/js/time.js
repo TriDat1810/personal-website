@@ -5,7 +5,7 @@ $(function () {
     var now = new Date();
     var hour = now.getHours() + now.getMinutes() / 60;
     var isWeekend = (today === 0 || today === 6);
-    var openTime = 9;
+    var openTime = 9.5; // 9:30 AM
     var closeTime = isWeekend ? 17 : 18.5;
     var isOpen = hour >= openTime && hour < closeTime;
 
